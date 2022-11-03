@@ -10,7 +10,7 @@ unsigned long long fibonacci(unsigned long long int n_val){
 }
 
 int main(){
-    unsigned long long int input = 15;
+    unsigned long long int input = 14;
     unsigned long long int output;
 
     output = fibonacci(input);
