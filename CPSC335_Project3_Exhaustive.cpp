@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-unsigned long long fibonacci(unsigned long long int n_val){
+unsigned long long int fibonacci(unsigned long long int n_val){
     if(n_val <= 1){
         return n_val;
     }else{
