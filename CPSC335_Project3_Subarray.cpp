@@ -14,6 +14,20 @@ void test(int a, int b)
     returnVals[0] = a;
     returnVals[1] = b;
 }
+
+void subarrayGen(vector<int> fullArray)
+{
+    //largest = 0 sum
+    //b = largest sum b; e = largest sum e
+    //for (b)
+        // for(e=b)
+            //sum b:e
+            //if sum b:e > largest
+                // largest = sum b:e
+                // b = this b
+                // e = this e
+    // returnVals 0 and 1 = b and e
+}
 int main()
 {
     vector<int> fullArray;
