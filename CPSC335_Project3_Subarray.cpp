@@ -6,40 +6,38 @@ using namespace std;
 
 int returnVals[2];
 
-void test(int a, int b)
-{
-    a += 2;
-    b += 3;
-    
-    returnVals[0] = a;
-    returnVals[1] = b;
-}
-
 void subarrayGen(vector<int> fullArray)
 {
-    //largest = 0 sum
-    //b = largest sum b; e = largest sum e
-    //for (b)
-        // for(e=b)
-            //sum b:e
-            //if sum b:e > largest
-                // largest = sum b:e
-                // b = this b
-                // e = this e
-    // returnVals 0 and 1 = b and e
+    int largest = 0;
+    for(int i = 0; i < fullArray.size(); i++)
+    {
+        for(int j = i; j < fullArray.size(); j++)
+        {
+            int c = i, summation = 0;;
+            while(c <= j)
+            {
+                summation += fullArray[c];
+                c++;
+            }
+            if (summation > largest)
+            {
+                largest = summation;
+                returnVals[0] = i;
+                returnVals[1] = j;
+            }
+        }
+    }
 }
+
 int main()
 {
     vector<int> fullArray;
     string hold, temp = "";
     int count = 0, inElem;
-    // just to test returning two at once, delete in final v
-    int test1 = 0, test2 = 2;
-    test(test1, test2);
 
-    cout << "Please input the array you'd like to check, separating each element with a comma (no spaces please): ";
+    cout << "Please input the array you'd like to check, separating each element with a comma (no spaces and enclosed in parentheses please): ";
     getline(cin, hold);
-    for (int count = 0; count < hold.size(); count++)
+    for (int count = 1; count < hold.size()-1; count++)
     {
         stringstream elem;
         if(hold[count] != ',')
@@ -60,19 +58,15 @@ int main()
     elem >> inElem;
     fullArray.push_back(inElem);
 
-    //just to test an above function, delete in final v
+    subarrayGen(fullArray);
+    
     cout << "(";
-    for(int i = 0; i < 2; i++)
+    for(int i = returnVals[0]; i < (returnVals[1]+1); i++)
     {
-        cout << returnVals[i];
-        if(i == 0)
+        cout << fullArray[i];
+        if(i != returnVals[1])
             cout << ", ";
     }
     cout << ")" << endl;
-
-    for(int j = 0; j < fullArray.size(); j++)
-    {
-        cout<< fullArray[j] << " ";
-    }
 }
 
