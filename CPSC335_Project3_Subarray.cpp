@@ -35,11 +35,15 @@ int main()
     string hold, temp = "";
     int count = 0, inElem;
 
-    cout << "Please input the array you'd like to check, separating each element with a comma (no spaces and enclosed in parentheses please): ";
+    cout << "Please input the array you'd like to check, separating each element with a comma and enclosing it in parentheses: ";
     getline(cin, hold);
     for (int count = 1; count < hold.size()-1; count++)
     {
         stringstream elem;
+        if(hold[count] == ' ')
+        {
+            count++;
+        }
         if(hold[count] != ',')
         {
             temp += hold[count];
