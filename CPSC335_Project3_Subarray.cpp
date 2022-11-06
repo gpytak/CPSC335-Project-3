@@ -6,12 +6,12 @@ using namespace std;
 
 int returnVals[2];
 
-void subarrayGen(vector<int> fullArray)
+void largestSubarray(vector<int> fullArray, int elemNum)
 {
     int largest = 0;
-    for(int i = 0; i < fullArray.size(); i++)
+    for(int i = 0; i < elemNum; i++)
     {
-        for(int j = i; j < fullArray.size(); j++)
+        for(int j = i; j < elemNum; j++)
         {
             int c = i, summation = 0;;
             while(c <= j)
@@ -33,17 +33,13 @@ int main()
 {
     vector<int> fullArray;
     string hold, temp = "";
-    int count = 0, inElem;
+    int count = 0, inElem, elemNum = 0;
 
-    cout << "Please input the array you'd like to check, separating each element with a comma and enclosing it in parentheses: ";
-    getline(cin, hold);
-    for (int count = 1; count < hold.size()-1; count++)
+    cout << "Please input the array you'd like to check, separating each element with a comma and enclosing it in parentheses (no spaces please): ";
+    cin >> hold;
+    for (int count = 1; hold[count] != ')'; count++)
     {
         stringstream elem;
-        if(hold[count] == ' ')
-        {
-            count++;
-        }
         if(hold[count] != ',')
         {
             temp += hold[count];
@@ -53,7 +49,7 @@ int main()
             elem << temp;
             elem >> inElem;
             fullArray.push_back(inElem);
-
+            elemNum++;
             temp = "";
         }
     }
@@ -61,8 +57,9 @@ int main()
     elem << temp;
     elem >> inElem;
     fullArray.push_back(inElem);
+    elemNum++;
 
-    subarrayGen(fullArray);
+    largestSubarray(fullArray, elemNum);
     
     cout << "(";
     for(int i = returnVals[0]; i < (returnVals[1]+1); i++)
