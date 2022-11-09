@@ -1,7 +1,6 @@
 #include <vector>
 #include <sstream>
 #include <iostream>
-#include <string>
 using namespace std;
 
 int returnVals[2];
@@ -35,8 +34,8 @@ int main()
     string hold, temp = "";
     int count = 0, inElem, elemNum = 0;
 
-    cout << "Please input the array you'd like to check, separating each element with a comma and enclosing it in parentheses (no spaces please): ";
-    cin >> hold;
+    cout << "Please input the array you'd like to check, separating each element with a comma and enclosing it in parentheses: ";
+    getline(cin, hold);
     for (int count = 1; hold[count] != ')'; count++)
     {
         stringstream elem;
