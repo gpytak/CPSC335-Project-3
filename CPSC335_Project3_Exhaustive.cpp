@@ -2,8 +2,10 @@
 using namespace std;
 
 unsigned long long int fibonacci(unsigned long long int n_val){
-    if(n_val <= 1){
-        return n_val;
+    if(n_val == 0){
+        return 0;
+    }else if(n_val == 1){
+        return 1;
     }else{
         return fibonacci(n_val-1) + fibonacci(n_val-2);
     }
