@@ -12,7 +12,7 @@ void largestSubarray(vector<int> fullArray, int elemNum)
     {
         for(int j = i; j < elemNum; j++)
         {
-            int c = i, summation = 0;;
+            int c = i, summation = 0;
             while(c <= j)
             {
                 summation += fullArray[c];
@@ -32,11 +32,11 @@ int main()
 {
     vector<int> fullArray;
     string hold, temp = "";
-    int count = 0, inElem, elemNum = 0;
+    int count = 1, inElem, elemNum = 0;
 
     cout << "Please input the array you'd like to check, separating each element with a comma and enclosing it in parentheses: ";
     getline(cin, hold);
-    for (int count = 1; hold[count] != ')'; count++)
+    for (count; hold[count] != ')'; count++)
     {
         stringstream elem;
         if(hold[count] != ',')
@@ -61,7 +61,7 @@ int main()
     largestSubarray(fullArray, elemNum);
     
     cout << "(";
-    for(int i = returnVals[0]; i < (returnVals[1]+1); i++)
+    for(int i = returnVals[0]; i <= (returnVals[1]); i++)
     {
         cout << fullArray[i];
         if(i != returnVals[1])
